@@ -1,0 +1,44 @@
+#background{
+    background-color: rgb(85, 3, 132)
+  }
+  
+  h1 {
+    color: #ffffff;
+    text-align: center;
+    font-family: simsun;
+    font-size: 5rem;
+    margin: 3rem;
+    border-top: 3rem
+  }
+  
+  #container {
+    background-color: #ffffff;
+    width: 540px;
+    border-radius: 1rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  
+  #time {
+    color: rgb(85, 3, 132);
+    font-size: 3rem;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgb(85, 3, 132);
+    margin: .5rem;
+  }
+  
+  #buttons {
+    font-size: 3rem;
+    text-align: center;
+  }
+  
+  #start, #stop, #reset {
+    font-size: 1.5rem;
+    color: rgb(85, 3, 132);
+    border-radius: .3rem;
+    box-shadow: 0 0 20px rgb(85, 3, 132);
+  }
+
+

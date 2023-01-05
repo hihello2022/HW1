@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Kantoku.css">
+</head>
+<body id="background">
+    <main>
+    <h1>檄   場</h1>
+        <div id="container">
+          <div id="time">00:00:00.000</div>
+          <div id="buttons">
+            <audio loop id = "audio" src="Fin大八木監督90秒Ver.mp3" type="mp3"></audio>
+            <input id="start" type="button" value="START"></input>
+            <input id="stop"type="button" value="STOP"></input>
+            <input id="reset" type="reset" value="RESET"></input>
+          </div>
+        </div>  
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+
+window.addEventListener('DOMContentLoaded', function(){
+
+const start = document.getElementById("start");
+const stop = document.getElementById("stop");
+const reset = document.getElementById("reset");
+const audio = document.querySelector("audio");
+
+start.addEventListener("click", e => {
+    audio.play();
+});
+
+stop.addEventListener("click", e => {
+    audio.pause();
+});
+});
+
+//ストップウォッチ機能
+const time = document.getElementById('time');
+const startButton = document.getElementById('start');
+const stopButton = document.getElementById('stop');
+const resetButton = document.getElementById('reset');
+
+// 開始時間
+let startTime;
+// 停止時間
+let stopTime = 0;
+// タイムアウトID
+let timeoutID;
+
+// 時間を表示する関数
+function displayTime() {
+  const currentTime = new Date(Date.now() - startTime + stopTime);
+  const h = String(currentTime.getHours()-9).padStart(2, '0');
+  const m = String(currentTime.getMinutes()).padStart(2, '0');
+  const s = String(currentTime.getSeconds()).padStart(2, '0');
+  const ms = String(currentTime.getMilliseconds()).padStart(3, '0');
+
+  time.textContent = `${h}:${m}:${s}.${ms}`;
+  timeoutID = setTimeout(displayTime, 10);
+}
+
+// スタートボタンがクリックした後の処理
+startButton.addEventListener('click', () => {
+  startButton.disabled = true;
+  stopButton.disabled = false;
+  resetButton.disabled = true;
+  startTime = Date.now();
+  displayTime();
+});
+
+// ストップボタンがクリックした後の処理
+stopButton.addEventListener('click', function() {
+  startButton.disabled = false;
+  stopButton.disabled = true;
+  resetButton.disabled = false;
+  clearTimeout(timeoutID);
+  stopTime += (Date.now() - startTime);
+});
+
+// リセットボタンがクリックの処理
+resetButton.addEventListener('click', function() {
+  startButton.disabled = false;
+  stopButton.disabled = true;
+  resetButton.disabled = true;
+  time.textContent = '00:00:00.000';
+  stopTime = 0;
+});
+
+
+   /* window.onload = function() {
+            var my_audio = new Audio("サウンドファイルのURL");
+                //ボタンにクリックイベントを設定
+                document.getElementById("btn20200502").onclick = function() {
+                    my_audio.currentTime = 0;  //再生開始位置を先頭に戻す
+                    my_audio.play();  //サウンドを再生
+                }
+        }
+/*
+// Audioオブジェクトを作成
+let ad = new Audio("Fin大八木監督90秒Ver.mp3");
+// 連続再生ボタン
+let elem_loop = document.getElementById("loop");
+elem_loop.addEventListener("click", function(){
+	ad.play();
+	ad.loop = true;  // ループ再生
+}, false);
+*/
+//一時停止ボタン
+
+//連続再生バージョン 
+ 
+
+
+</script>
+</body>
+</html>
+
